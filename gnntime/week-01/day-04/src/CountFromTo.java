@@ -7,9 +7,11 @@ public class CountFromTo {
         System.out.println("Give two numbers");
         a = scanner.nextInt();
         b = scanner.nextInt();
-        if (b < a) {
-            System.out.println("The second number should be bigger.");
-        } else for (a = a; a < b; a++) {
+        while (b < a) {
+            System.out.println("The second number should be bigger, try again.");
+            b = scanner.nextInt();
+        }
+        for (a = a; a < b; a++) {
             System.out.println(a);
         }
 
