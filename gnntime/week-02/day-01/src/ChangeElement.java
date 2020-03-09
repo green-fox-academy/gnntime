@@ -5,7 +5,7 @@ public class ChangeElement {
 
         int a = 8;
         for (int i = 0; i < numbers.length ; i++) {
-        if (numbers[i] == a) {numbers[i] = 4;}
+            if (numbers[i] == a) {numbers[i] = 4;}
         }
         System.out.println(numbers[3]);
     }
