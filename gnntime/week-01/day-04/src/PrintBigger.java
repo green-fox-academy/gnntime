@@ -11,8 +11,7 @@ public class PrintBigger {
 
         if (firstNumber > secondNumber) {
             System.out.println("The bigger number is: " + firstNumber);
-        }
-        else {
+        } else {
             System.out.println("The bigger number is: " + secondNumber);
         }
 
