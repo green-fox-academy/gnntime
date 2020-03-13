@@ -13,7 +13,7 @@ public class WriteSingleLine {
         List<String> content = new ArrayList<>();
         content.add(a);
         try {
-            Path filePath = Paths.get("files/my-file.txt");
+            Path filePath = Paths.get("Week-02\\Day-03\\files\\my-file.txt");
             Files.write(filePath, content);
         } catch (Exception e) {
             System.out.println("Unable to write file:my-file.txt");

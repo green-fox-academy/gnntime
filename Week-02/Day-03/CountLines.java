@@ -12,7 +12,7 @@ public class CountLines {
         System.out.println("Input a file name");
         String filename = scanner.next();
         try {
-            Path filePath = Paths.get("files/"+filename);
+            Path filePath = Paths.get("Week-02/Day-03/files/"+filename);
             List<String> lines = Files.readAllLines(filePath);
             for (String line: lines) {
 

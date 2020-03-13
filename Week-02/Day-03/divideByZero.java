@@ -1,8 +1,7 @@
 public class divideByZero {
     public static void main(String[] args) {
 
-    int number = 15;
-    divide(number);
+    divide(500);
     }
 
     public static void divide(int divided) {

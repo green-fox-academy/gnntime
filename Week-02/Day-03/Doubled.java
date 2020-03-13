@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 public class Doubled {
     public static void main(String[] args) throws IOException {
 
-        Path filePath = Paths.get("files/duplicated-chars");
+        Path filePath = Paths.get("Week-02/Day-03/files/duplicated-chars");
         String original = Files.readString(filePath);
 
         char[] ch = new char[original.length()];
