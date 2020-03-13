@@ -6,8 +6,8 @@ import java.util.List;
 
 public class CopyFile {
     public static void main(String[] args)  {
-        String copyFrom = "/Week-02/Day-03/files/my-file.txt";
-        String copyTo = "/Week-02/Day-03/files/my-file2.txt";
+        String copyFrom = "files/my-file.txt";
+        String copyTo = "files/my-file2.txt";
         try {
             copyFile(copyFrom, copyTo);
             System.out.println("It worked");

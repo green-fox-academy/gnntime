@@ -7,7 +7,7 @@ public class PrintEachLine {
 
     public static void main(String[] args) {
 
-    String target ="Week-02/Day-03/files/cars.txt";
+    String target ="files/cars.txt";
     printLine(target);
     }
     public static void printLine (String origin) {
