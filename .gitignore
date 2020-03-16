@@ -1,4 +1,4 @@
-.idea
-out
-*.iml
-*.xml
+/.idea/
+/*.iml/
+/*.xml/
+/out/
