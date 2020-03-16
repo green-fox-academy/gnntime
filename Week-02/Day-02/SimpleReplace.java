@@ -1,10 +1,10 @@
 public class SimpleReplace {
-    public static void main(String[] args) {
-        String example = "In a dishwasher far far away";
+  public static void main(String[] args) {
+    String example = "In a dishwasher far far away";
 
-        String replacedString = example.replace("dishwasher", "galaxy");
+    String replacedString = example.replace("dishwasher", "galaxy");
 
-        System.out.println(replacedString);
+    System.out.println(replacedString);
 
-    }
+  }
 }
