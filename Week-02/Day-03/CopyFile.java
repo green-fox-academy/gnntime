@@ -8,18 +8,29 @@ public class CopyFile {
   public static void main(String[] args) {
     String copyFrom = "files/my-file.txt";
     String copyTo = "files/my-file2.txt";
-    try {
-      copyFile(copyFrom, copyTo);
+    copyFile(copyFrom, copyTo);
+    if (copyFile(copyFrom, copyTo)) {
       System.out.println("It worked");
-    } catch (Exception e) {
+
+    } else {
       System.out.println("fail");
     }
   }
 
-  private static void copyFile(String origin, String target) throws IOException {
-    Path filePath = Paths.get(origin);
-    List<String> content = Files.readAllLines(filePath);
-    Path filePath2 = Paths.get(target);
-    Files.write(filePath2, content);
+  private static boolean copyFile(String origin, String target) {
+    boolean didItWork = false;
+    try {
+      Path filePath = Paths.get(origin);
+      List<String> content = Files.readAllLines(filePath);
+      Path filePath2 = Paths.get(target);
+      Files.write(filePath2, content);
+      didItWork = true;
+    } catch (IOException e) {
+      didItWork = false;
+    }
+      return didItWork;
+
+
+
   }
 }
