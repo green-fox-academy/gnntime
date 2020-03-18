@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReversedOrder {
@@ -16,7 +17,7 @@ public class ReversedOrder {
     Path filepathOrigin = Paths.get(origin);
     Path filepathTarget = Paths.get(target);
     List<String> linesToReverse = Files.readAllLines(filepathOrigin);
-    List<String> reversedLines = linesToReverse;
+    List<String> reversedLines = new ArrayList<>(linesToReverse);
     //adding lines with .add
     /*
     for (int i = 0; i < linesToReverse.size(); i++) {
