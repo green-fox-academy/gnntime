@@ -1,8 +1,7 @@
-package exercises;
-
 import static org.junit.Assert.*;
 
 
+import exercises.Anagram;
 import org.junit.Test;
 
 public class AnagramTest {
