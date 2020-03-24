@@ -1,4 +1,5 @@
-package greenFoxInheritance;
+package greenFoxInheritance2;
+
 
 public class Mentor extends Person {
 

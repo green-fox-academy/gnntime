@@ -1,6 +1,6 @@
-package greenFoxInheritance;
+package greenFoxInheritance2;
 
-public class Student extends Person {
+public class Student extends Person implements Cloneable {
 
   String previousOrganisation;
   int skippedDays;
@@ -20,7 +20,6 @@ public class Student extends Person {
     this.previousOrganisation = previousOrganisation;
     this.skippedDays = 0;
   }
-
   @Override
   public void getGoal() {
     System.out.println("Be a junior software developer.");
@@ -32,5 +31,10 @@ public class Student extends Person {
   }
   public void skipDays(int numberOfDays) {
     this.skippedDays = skippedDays + numberOfDays;
+  }
+
+  @Override
+  public Student clone() throws CloneNotSupportedException {
+  return (Student)super.clone();
   }
 }

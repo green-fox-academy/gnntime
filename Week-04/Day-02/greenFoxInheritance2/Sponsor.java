@@ -1,4 +1,4 @@
-package greenFoxInheritance;
+package greenFoxInheritance2;
 
 public class Sponsor extends Person {
 
@@ -25,7 +25,6 @@ public class Sponsor extends Person {
   public void introduce() {
     System.out.println("Hi, I'm " + name + ", a " + age + "year old " + gender + " who represents " + company + " and hired " + hiredStudents + " students so far.");
   }
-
   public void hire() {
     this.hiredStudents = hiredStudents++;
   }

@@ -1,9 +1,9 @@
-package greenFoxInheritance;
+package greenFoxInheritance2;
 
 import java.util.ArrayList;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws CloneNotSupportedException {
     ArrayList<Person> people = new ArrayList<>();
 
     Person mark = new Person("Mark", 46, "male");
@@ -38,11 +38,19 @@ public class Main {
       person.getGoal();
     }
 
-    greenFoxInheritance.Cohort awesome = new Cohort("AWESOME");
+    Cohort awesome = new Cohort("AWESOME");
     awesome.addStudent(student);
     awesome.addStudent(john);
     awesome.addMentor(mentor);
     awesome.addMentor(gandhi);
     awesome.info();
+
+    Student student1 = new Student("John",20, "male", "BME");
+    student1.introduce();
+    Student johnTheClone = student1.clone();
+    johnTheClone.name = "JohnTheClone";
+    johnTheClone.introduce();
+
   }
 }
+
