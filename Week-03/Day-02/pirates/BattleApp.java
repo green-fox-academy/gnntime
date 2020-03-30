@@ -7,7 +7,11 @@ public class BattleApp {
   Ship ship2 = new Ship("Mary");
   ship1.fillShip();
   ship2.fillShip();
+    System.out.println(ship1.score);
+    System.out.println(ship2.score);
     System.out.println(ship1.battle(ship2));
-    System.out.println(ship1.getShipInfo());
+    System.out.println(ship1.score);
+    System.out.println(ship2.score);
+
   }
 }

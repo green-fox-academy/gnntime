@@ -8,9 +8,9 @@ public class Ship {
 
   private String name;
   private List<Pirate> crew = new ArrayList<>();
-  private int crewSize = 0;
+  private List<Pirate> crewAlive = new ArrayList<>();
   private Pirate captain;
-  private int score = 0;
+  protected int score = 0;
 
   public Ship(String name) {
     this.name = name;
@@ -22,38 +22,55 @@ public class Ship {
     for (int i = 0; i < numberOfPirates; i++) {
       Pirate salty = new Pirate();
       this.crew.add(salty);
-      this.crewSize++;
     }
     this.captain = new Pirate();
   }
 
-  public boolean battle(Ship otherShip) {
-    this.score = getAlivePirates() - captain.getRumLevel();
-    Random randomGenerator = new Random();
-    int numberOfDeaths = randomGenerator.nextInt(score * 2 - 1);
-    int numberOfRums = randomGenerator.nextInt(10000);
-    if (this.score > otherShip.score) {
-      for (int i = 0; i < crew.size() + numberOfDeaths/2; i++) {
-        crew.get(i).die();
-        otherShip.crew.get(i).die();
+  public void updateAliveCrew() {
+    this.crewAlive = this.crew;
+    for (Pirate pirate : this.crew) {
+      if (!pirate.isAlive) {
+        this.crewAlive.remove(pirate);
       }
-      for (int i = 0; i < getAlivePirates() ; i++) {
-        for (int j = 0; j < numberOfRums; j++) {
-          crew.get(i).drinkSomeRum();
-          captain.drinkSomeRum();
-        }
-      }
-      return true;
-    } else {
-      for (int i = 0; i < getAlivePirates() ; i++) {
-        for (int j = 0; j < numberOfRums; j++) {
-          crew.get(i).drinkSomeRum();
-          captain.drinkSomeRum();
-        }
-      }
-      return false;
     }
   }
+
+  public void party() {
+    Random randomGenerator = new Random();
+    int numberOfRums = randomGenerator.nextInt(10);
+    updateAliveCrew();
+    for ( Pirate pirate : crewAlive ) {
+      for (int i = 0; i < numberOfRums; i++) {
+        pirate.drinkSomeRum();
+      }
+    }
+  }
+
+  public boolean battle(Ship otherShip) {
+    updateAliveCrew();
+    otherShip.updateAliveCrew();
+    this.score = getAlivePirates() - captain.getRumLevel();
+    otherShip.score = otherShip.getAlivePirates() - otherShip.captain.getRumLevel();
+    Random randomGenerator = new Random();
+    if (crewAlive.size() !=0) {
+      int numberOfDeaths1 = randomGenerator.nextInt(crewAlive.size() +1);
+      int numberOfDeaths2 = randomGenerator.nextInt(otherShip.crewAlive.size() +1);
+      if (this.score > otherShip.score) {
+        for (int i = 0; i < numberOfDeaths2; i++) {
+          otherShip.crewAlive.get(i).die();
+        }
+        party();
+        return true;
+      }
+      for (int i = 0; i < numberOfDeaths1; i++) {
+        crewAlive.get(i).die();
+      }
+      otherShip.party();
+      return false;
+    }
+    return false;
+  }
+
 
   public int getAlivePirates() {
     int numberOfAlivePirates = 0;
@@ -66,7 +83,7 @@ public class Ship {
   }
 
   public String getShipInfo() {
-    String display = "The name of the ship is: " + this.name + ", the number of pirates on the ship is: " + crewSize +
+    String display = "The name of the ship is: " + this.name + ", the number of pirates on the ship is: " + crew.size() +
         " out of which " + getAlivePirates() + " are alive" + " The ships's captain consumed: "
         + captain.getRumLevel() + "bottles of rum. The captain's status is: " + captain.howsItGoingMate();
     return display;
@@ -74,11 +91,9 @@ public class Ship {
 
   public void addPirateToShip(Pirate pirate) {
     this.crew.add(pirate);
-    this.crewSize++;
   }
 
   public void assignAsCaptain(Pirate pirate) {
     this.captain = pirate;
-    this.crewSize++;
   }
 }
