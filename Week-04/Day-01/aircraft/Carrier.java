@@ -20,6 +20,14 @@ public class Carrier {
     return healthPoints;
   }
 
+  public int getTotalDamage() {
+    int totalDamage =0;
+    for (Aircrafts aircrafts: aircraftsList) {
+        totalDamage += aircrafts.getBaseDamage() + aircrafts.getCurrentAmmo();
+    }
+    return totalDamage;
+  }
+
   public void add(Aircrafts aircrafts) {
     aircraftsList.add(aircrafts);
   }
@@ -51,13 +59,24 @@ public class Carrier {
     //aircraft.fight();
     int damage = 0;
     for (Aircrafts aircraft: this.aircraftsList) {
-      aircraft.fight();
       damage = damage + aircraft.fight();
     }
-    carrier.healthPoints += damage;
+    carrier.healthPoints -= damage;
     //this.healthPoints= this.healthPoints - carrier.aircraftsList.size()*carrier.aircraft.getBaseDamage();
     //DECREASE THE AMMO - PENDING
     System.out.println(carrier.healthPoints);
   }
+  public String status() {
+    if (this.healthPoints <= 0) {
+      return "It's dead Jim";
+    }
+      String report = "HP: " + this.healthPoints + " Aircraft count: " + aircraftsList.size() + "Ammo storage: " + this.storedAmmo + "Total damage: " + getTotalDamage() +
+          System.lineSeparator() + "Aircrafts:";
+      for (Aircrafts aircrafts : aircraftsList) {
+        report += System.lineSeparator() + aircrafts.getStatus();
+      }
+      return report;
+  }
+
 }
 
