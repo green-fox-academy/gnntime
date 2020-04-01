@@ -31,13 +31,8 @@ public class Carrier {
   public void add(Aircrafts aircrafts) {
     aircraftsList.add(aircrafts);
   }
-  /*fill
-  It should fill all the aircraft with ammo and subtract the needed ammo from the ammo storage
-  If there is not enough ammo then it should start to fill the aircrafts with priority first
-  If there is no ammo when this method is called, it should throw an exception*/
 
   public void fill() throws Exception {
-    int ammoUsed;
     if (this.storedAmmo == 0) {
       throw new Exception("No ammo to fill...");
     } else {
@@ -56,14 +51,11 @@ public class Carrier {
   }
 
   public void fight(Carrier carrier){
-    //aircraft.fight();
     int damage = 0;
     for (Aircrafts aircraft: this.aircraftsList) {
       damage = damage + aircraft.fight();
     }
     carrier.healthPoints -= damage;
-    //this.healthPoints= this.healthPoints - carrier.aircraftsList.size()*carrier.aircraft.getBaseDamage();
-    //DECREASE THE AMMO - PENDING
     System.out.println(carrier.healthPoints);
   }
   public String status() {

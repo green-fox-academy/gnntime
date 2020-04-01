@@ -30,6 +30,10 @@ public class Pirate {
     this.isAlive = false;
   }
 
+  public void sleep() {
+    this.rumLevel = 0;
+  }
+
   public int randomizeBrawlChance() {
     Random randomGenerator = new Random();
     return randomGenerator.nextInt(9);

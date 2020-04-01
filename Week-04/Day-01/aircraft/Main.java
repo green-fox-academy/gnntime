@@ -1,7 +1,7 @@
 package aircraft;
 
 public class Main {
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
 
     Carrier carr1 = new Carrier(100, 1000);
     Carrier carr2 = new Carrier(200, 1000);
@@ -25,15 +25,15 @@ public class Main {
       System.out.println("No ammo to fill...");
       return;
     }
-
-
     System.out.println(carr2.getHealthPoints());
     carr1.fight(carr2);
-    carr1.fill();
+    try {
+      carr1.fill();
+    }
+    catch (Exception e) {
+      System.out.println("No ammo to fill...");
+    }
     System.out.println(carr2.status());
     System.out.println(carr1.status());
-
-
-
   }
 }

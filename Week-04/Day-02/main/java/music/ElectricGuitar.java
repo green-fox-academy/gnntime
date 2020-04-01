@@ -5,7 +5,6 @@ public class ElectricGuitar extends StringedInstruments {
   public ElectricGuitar() {
     this.name = "Electric Guitar";
     this.numberOfStrings = 6;
-
   }
 
   public ElectricGuitar(int stringNumber) {

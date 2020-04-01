@@ -58,21 +58,14 @@ public class Aircrafts {
   public String getType() {
     return this.type;
   }
-  /*getStatus
-  It should return a string like: Type F35, Ammo: 10, Base Damage: 50, All Damage: 500*/
+
   public String getStatus() {
     return "Type " + getType() + ", Ammo: " + getCurrentAmmo() + ", Base Damage: " + getBaseDamage()
         + ", All" + " Damage: " + fight();
   }
 
-  /*isPriority
-  It should return if the aircraft is priority in the ammo fill queue. It's true for F35 and false for F16*/
   public boolean isPriority() {
-    if (getType() == "F35") {
-      return true;
-    }else {
-      return false;
-    }
+    return getType() == "F35";
   }
 }
 
