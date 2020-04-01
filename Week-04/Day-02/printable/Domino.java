@@ -12,7 +12,6 @@ public class Domino implements Printable {
 
   @Override
   public void printAllFields() {
-
     System.out.println("Domino A side: " + this.leftSide + ", " + "Domino B side: " + this.rightSide);
   }
 }

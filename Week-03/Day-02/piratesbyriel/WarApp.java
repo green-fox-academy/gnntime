@@ -12,14 +12,16 @@ public class WarApp {
     for (int i = 0; i < ships; i++) {
       boolean toFirstArmada = random.nextBoolean();
 
-      Ship ship = new Ship();
+      piratesbyriel.Ship ship = new Ship();
       ship.fillShip();
 
+      /*
       if (toFirstArmada) {
         armada1.addShip(ship);
       } else {
         armada2.addShip(ship);
       }
+      */
     }
 
     boolean firstWins = armada1.war(armada2);

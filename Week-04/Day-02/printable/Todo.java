@@ -14,6 +14,6 @@ public class Todo implements Printable {
 
   @Override
   public void printAllFields() {
-    System.out.println("Task " + this.task + " | " + " Priority " + this.priority + "Done: " + this.done);
+    System.out.println("Task " + this.task + " | " + " Priority " + this.priority + " | " + "Done: " + this.done);
   }
 }

@@ -2,14 +2,13 @@ package main.java.animals;
 
 public abstract class Animal {
 
-  String name;
-  int age;
-  String gender;
-  int numberOfLegs;
+  protected String name;
+  protected int age;
+  protected String gender;
+  protected int numberOfLegs;
+  protected boolean isPredator;
+  protected String breed;
 
   public abstract String getName();
-
   public abstract String breed();
-
-  public abstract String walk();
 }

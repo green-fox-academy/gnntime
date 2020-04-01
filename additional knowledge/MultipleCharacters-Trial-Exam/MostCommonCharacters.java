@@ -36,7 +36,7 @@ public class MostCommonCharacters {
     while (result.size() < limit){
       int maxOccurences = 0;
       Character actualChar = null;
-      for (Map.Entry<Character, Integer> entry:characterOccurences.entrySet()) {
+      for (Map.Entry<Character, Integer> entry : characterOccurences.entrySet()) {
         if (entry.getValue() > maxOccurences){
           maxOccurences = entry.getValue();
           actualChar = entry.getKey();
