@@ -1,16 +1,17 @@
-package animal;
+package exercises;
 
 public class Animal {
   protected String name;
   protected int hunger;
   protected int thirst;
 
-  public Animal () {
+  public Animal() {
+    this.name = "dog";
     this.hunger = 50;
     this.thirst = 50;
   }
   public void eat() {
-    hunger -= 1;
+    this.hunger -= 1;
   }
   public void drink() {
     thirst -= 1;

@@ -10,14 +10,14 @@ public class Dominoes {
     // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
     // eg: [2, 4], [4, 3], [3, 5] ...
     List<Domino> snake = new ArrayList<>();
-    Domino initial = dominoes.get(4);
+    Domino initial = dominoes.get(0);
     snake.add(initial);
 
     for (int i = 0; i < dominoes.size()-1; i++) {
       Domino compareDomino = snake.get(i);
-      for (int j = 0; j < dominoes.size(); j++) {
-        if (compareDomino.getRightSide() == dominoes.get(j).getLeftSide()) {
-          snake.add(dominoes.get(j));
+      for (Domino domino : dominoes) {
+        if (compareDomino.getRightSide() == domino.getLeftSide()) {
+          snake.add(domino);
         }
       }
     }

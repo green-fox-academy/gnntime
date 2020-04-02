@@ -18,7 +18,8 @@ public class CowsAndBulls {
   public static void main(String[] args) {
 
     CowsAndBulls one = new CowsAndBulls();
-    one.start();
+    System.out.println(one.goal);
+    System.out.println(one.guess(6666));
   }
 
   public static void randomizeGoal() {
@@ -85,8 +86,3 @@ public class CowsAndBulls {
     return cows + " cow, " + bulls + " bull";
   }
 }
-
-
-
-
-

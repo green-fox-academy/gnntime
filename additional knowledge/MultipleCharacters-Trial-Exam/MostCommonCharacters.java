@@ -10,23 +10,20 @@ import java.util.Map;
 public class MostCommonCharacters {
   public static void main(String[] args) throws Exception {
 
-    System.out.println(returnMostCommonCharacters("assets/MostCommonCharacters.txt"));
+    System.out.println(returnMostCommonCharacters());
 
   }
 
-  private static Map<Character, Integer> returnMostCommonCharacters(String path) throws Exception {
-    Path filepath = Paths.get(path);
+  private static Map<Character, Integer> returnMostCommonCharacters() throws Exception {
+    Path filepath = Paths.get("assets/MostCommonCharacters.txt");
     List<String> lines = new ArrayList<>();
     try {
       lines = Files.readAllLines(filepath);
-    } catch (IOException e) {
-      throw new Exception("File does not exist");
+    } catch (IOException io) {
+      throw new IOException("File does not exist");
     }
-
     Map<Character, Integer> characterOccurences = countCharacterOccurences(lines);
-
     Map<Character, Integer> result = selectMostCommonCharacters(characterOccurences, 2);
-
     return result;
   }
 

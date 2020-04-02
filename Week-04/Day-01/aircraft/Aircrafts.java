@@ -1,6 +1,6 @@
 package aircraft;
 
-public class Aircrafts {
+public abstract class Aircrafts {
   private int maxAmmo;
   private int baseDamage;
   private int currentAmmo;

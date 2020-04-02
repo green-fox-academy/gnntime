@@ -2,16 +2,26 @@ package animal;
 
 public class Main {
   public static void main(String[] args) {
+    Farm farm = new Farm();
 
-    Animal dog = new Animal();
-    Animal snake = new Animal();
-    dog.play();
-    dog.eat();
-    dog.drink();
-    dog.play();
-    snake.eat();
-    System.out.println(dog.hunger);
-    System.out.println(dog.thirst);
-    System.out.println(snake.hunger);
+    farm.breed();
+    farm.breed();
+    farm.breed();
+    farm.breed();
+    farm.breed();
+    System.out.println(farm.listOfAnimals.size());
+    farm.listOfAnimals.get(1).eat();
+    farm.listOfAnimals.get(1).eat();
+    farm.listOfAnimals.get(4).eat();
+    farm.listOfAnimals.get(4).eat();
+    farm.listOfAnimals.get(4).eat();
+    farm.listOfAnimals.get(3).play();
+    farm.slaughter();
+    farm.breed();
+    farm.breed();
+    farm.breed();
+    System.out.println(farm.listOfAnimals.size());
+    farm.breed();
+    System.out.println(farm.listOfAnimals.size());
   }
 }
