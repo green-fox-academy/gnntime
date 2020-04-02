@@ -10,11 +10,6 @@ public abstract class Aircrafts {
     currentAmmo = 0;
   }
 
-
-  public int getMaxAmmo() {
-    return maxAmmo;
-  }
-
   public void setMaxAmmo(int maxAmmo) {
     this.maxAmmo = maxAmmo;
   }
@@ -29,10 +24,6 @@ public abstract class Aircrafts {
 
   public int getCurrentAmmo() {
     return currentAmmo;
-  }
-
-  public void setCurrentAmmo(int currentAmmo) {
-    this.currentAmmo = currentAmmo;
   }
 
   public int fight() {

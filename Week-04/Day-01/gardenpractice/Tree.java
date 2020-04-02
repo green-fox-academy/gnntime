@@ -2,7 +2,7 @@ package gardenpractice;
 
 public class Tree extends Plant {
 
-  public Tree(String color) {
+  Tree(String color) {
     this.color = color;
     this.type = "Tree";
     this.currentWater = 0;

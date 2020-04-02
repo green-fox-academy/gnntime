@@ -21,7 +21,7 @@ public class Carrier {
   }
 
   public int getTotalDamage() {
-    int totalDamage =0;
+    int totalDamage = 0;
     for (Aircrafts aircrafts: aircraftsList) {
         totalDamage += aircrafts.getBaseDamage() + aircrafts.getCurrentAmmo();
     }
@@ -36,15 +36,14 @@ public class Carrier {
     if (this.storedAmmo == 0) {
       throw new Exception("No ammo to fill...");
     } else {
-
-      for (int i = 0; i < aircraftsList.size(); i++) {
-        if (aircraftsList.get(i).isPriority()) {
-          this.storedAmmo = aircraftsList.get(i).refill(this.storedAmmo);
+      for (Aircrafts aircrafts : aircraftsList) {
+        if (aircrafts.isPriority()) {
+          this.storedAmmo = aircrafts.refill(this.storedAmmo);
         }
       }
-      for (int i = 0; i < aircraftsList.size(); i++) {
-        if (!aircraftsList.get(i).isPriority()) {
-          this.storedAmmo = aircraftsList.get(i).refill(this.storedAmmo);
+      for (Aircrafts aircrafts : aircraftsList) {
+        if (!aircrafts.isPriority()) {
+          this.storedAmmo = aircrafts.refill(this.storedAmmo);
         }
       }
     }
@@ -62,13 +61,13 @@ public class Carrier {
     if (this.healthPoints <= 0) {
       return "It's dead Jim";
     }
-      String report = "HP: " + this.healthPoints + " Aircraft count: " + aircraftsList.size() + "Ammo storage: " + this.storedAmmo + "Total damage: " + getTotalDamage() +
+      String report = "HP: " + this.healthPoints + " Aircraft count: " + aircraftsList.size() +
+          "Ammo storage: " + this.storedAmmo + "Total damage: " + getTotalDamage() +
           System.lineSeparator() + "Aircrafts:";
       for (Aircrafts aircrafts : aircraftsList) {
         report += System.lineSeparator() + aircrafts.getStatus();
       }
       return report;
   }
-
 }
 

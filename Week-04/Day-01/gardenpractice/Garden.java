@@ -27,7 +27,7 @@ public class Garden {
 
   public void water(double waterAmount) {
     System.out.println("Watering with: " + (int)waterAmount);
-    waterAmount = waterAmount / countHowManyNeedWater();
+    waterAmount = waterAmount / countHowManyNeedsWater();
     for (Plant plant: listOfPlants) {
       if (plant.needsWater()) {
         plant.water(waterAmount);
@@ -35,7 +35,7 @@ public class Garden {
     }
   }
 
-  public int countHowManyNeedWater() {
+  public int countHowManyNeedsWater() {
     int counter = 0;
     for (Plant plant: listOfPlants ) {
       if (plant.needsWater()) {
