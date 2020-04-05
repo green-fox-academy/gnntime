@@ -29,7 +29,6 @@ public class MostCommonCharacters {
 
   private static Map<Character, Integer> selectMostCommonCharacters(Map<Character, Integer> characterOccurences, int limit) {
     Map<Character, Integer> result = new HashMap<>();
-
     while (result.size() < limit){
       int maxOccurences = 0;
       Character actualChar = null;
@@ -47,13 +46,12 @@ public class MostCommonCharacters {
 
   private static Map<Character, Integer> countCharacterOccurences(List<String> lines) {
     Map<Character, Integer> result = new HashMap<>();
-
-    for (String line:lines) {
+    for (String line :lines) {
       for (int i = 0; i < line.length(); i++) {
         Character actualChar = line.charAt(i);
         if (result.containsKey(actualChar)){
           result.put(actualChar, result.get(actualChar) +1);
-        }else{
+        } else {
           result.put(actualChar, 1);
         }
       }

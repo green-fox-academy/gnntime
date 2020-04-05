@@ -57,6 +57,7 @@ public class Carrier {
     carrier.healthPoints -= damage;
     System.out.println(carrier.healthPoints);
   }
+
   public String status() {
     if (this.healthPoints <= 0) {
       return "It's dead Jim";
