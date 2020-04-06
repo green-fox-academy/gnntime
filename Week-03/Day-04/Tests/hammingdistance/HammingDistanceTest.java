@@ -22,7 +22,7 @@ public class HammingDistanceTest {
     testList.add("apple");
     testList.add("tuple");
     testList.add("apply");
-    assertEquals(testList.size(), HammingDistance.getHammingDistance(exampleString, exampleList).size());
+    assertEquals(testList, HammingDistance.getListOfHammingDistanceSmallerThan3(exampleString, exampleList));
   }
 
   @Test
@@ -35,7 +35,7 @@ public class HammingDistanceTest {
     List<String> testList = new ArrayList<>();
     testList.add("donkey");
     testList.add("monday");
-    assertEquals(testList.size(), HammingDistance.getHammingDistance("monkey", exampleList).size());
+    assertEquals(testList.size(), HammingDistance.getListOfHammingDistanceSmallerThan3("monkey", exampleList).size());
   }
 
 
@@ -51,4 +51,19 @@ public class HammingDistanceTest {
     assertEquals(5, HammingDistance.hammingDistCounter("apple", "12345"));
   }
 
+  @Test
+  public void getListOfHammingDistanceSmallerThan3() {
+  }
+
+  @Test
+  public void hammingDistCounter() {
+  }
+
+  @Test
+  public void testGetListOfHammingDistanceSmallerThan3() {
+  }
+
+  @Test
+  public void testHammingDistCounter() {
+  }
 }

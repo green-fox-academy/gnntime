@@ -16,14 +16,14 @@ public class Lottery {
     mostCommonLotteryNumbers("files/lottery.txt");
 
   }
-  public static void mostCommonLotteryNumbers(String fileName) {
+  public static HashMap<Integer, Integer> mostCommonLotteryNumbers(String fileName) {
     List<String> lines = new ArrayList<>();
     List<Integer> numbersConverter = new ArrayList<>();
     HashMap<Integer, Integer> commonNumbers = new HashMap<>();
     Path filePath = Paths.get(fileName);
     try {
       lines = Files.readAllLines(filePath);
-    } catch (NoSuchFileException nsfe) {
+    } catch (NoSuchFileException nsf) {
       System.out.println("No such file");
     }
     catch (IOException io) {
@@ -51,19 +51,19 @@ public class Lottery {
         commonNumbers.put(i, occurence);
       }
     }
-    Map<Integer, Integer> result = new HashMap<>();
+    HashMap<Integer, Integer> result = new HashMap<>();
     while (result.size() < 5) {
-      int maxOccurences = 0;
+      int maxOccurence = 0;
       int actualInt = 0;
       for (Map.Entry<Integer, Integer> entry : commonNumbers.entrySet()) {
-        if (entry.getValue() > maxOccurences){
-          maxOccurences = entry.getValue();
+        if (entry.getValue() > maxOccurence){
+          maxOccurence = entry.getValue();
           actualInt = entry.getKey();
         }
       }
-      result.put(actualInt, maxOccurences);
+      result.put(actualInt, maxOccurence);
       commonNumbers.remove(actualInt);
     }
-    System.out.println(result);
+    return result;
   }
 }

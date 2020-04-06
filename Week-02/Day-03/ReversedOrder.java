@@ -10,7 +10,6 @@ public class ReversedOrder {
     String origin = "files/reversed-order.txt";
     String target = "files/reversed-order-done.txt";
     orderReverser(origin, target);
-
   }
 
   public static void orderReverser(String origin, String target) throws IOException {
