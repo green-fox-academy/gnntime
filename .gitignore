@@ -3,3 +3,8 @@
 *.xml
 /out/
 /additional knowledge/
+.gradle
+build
+gradle
+gradlew.bat
+settings.gradle
