@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Shop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1><a href="http://localhost:8080/webshop"> My Shop</a><a href="http://localhost:8080/more-filters"> More Filters</a></h1>
+<a href="http://localhost:8080/webshop/only-available">Only available</a>
+<a href="http://localhost:8080/webshop/cheapest-first">Cheapest first</a>
+<a href="http://localhost:8080/webshop/contains-nike">Contains nike</a>
+<a href="http://localhost:8080/webshop/average-price">Average price</a>
+<a href="http://localhost:8080/webshop/most-expensive-available">Most expensive available</a>
+<form method="post" action="/search">
+    <input type="text" name = "name">
+    <input type="submit" value="search">
+</form>
+<p th:text="${mostExpensive}"></p>
+</body>
+</html>

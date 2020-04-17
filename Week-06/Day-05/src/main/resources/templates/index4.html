@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Shop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1><a href="http://localhost:8080/webshop"> My Shop</a><a href="http://localhost:8080/more-filters"> More Filters</a></h1>
+<a href="http://localhost:8080/filter-by-type/clothes-and-shoes">clothes and shoes</a>
+<a href="http://localhost:8080/filter-by-type/electronics">electronics</a>
+<a href="http://localhost:8080/filter-by-type/beverages-and-snacks">beverages and snacks</a>
+<a href="http://localhost:8080/euro">euro</a>
+<a href="http://localhost:8080/original-currency">original currency</a>
+<form method="post" action="/above">
+    <input type="number" name = "price">
+    <input type="submit" value="above">
+    <input type="submit" value="below">
+    <input type="submit" value="exactly">
+</form>
+<table>
+    <th> name </th>>
+    <th> description </th>
+    <th> price </th>
+    <th> stock </th>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.getName()}"></td>
+        <td th:text="${item.getDescription()}"></td>
+        <td th:text="${item.getPrice()}"></td>
+        <td th:text="${item.getQuantityOfStock()}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SayHello {
-
   private AtomicLong counter = new AtomicLong();
   private String[] hellos = {"Mirëdita", "Ahalan", "Parev", "Zdravei", "Nei Ho", "Dobrý den", "Ahoj",
       "Goddag", "Goede dag, Hallo", "Hello", "Saluton", "Hei", "Bonjour",

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
 public class JavaStream12 {
   public static void main(String[] args) throws IOException {
     List<String> lines = new ArrayList<>();
@@ -23,7 +24,7 @@ public class JavaStream12 {
          .map(String::trim)
          .toArray()
 
-         .add(new Person());
+
 
     List<Person> people = new ArrayList<>();
     for (String line : lines) {
@@ -35,3 +36,4 @@ public class JavaStream12 {
     System.out.println(lines);
   }
 }
+*/
