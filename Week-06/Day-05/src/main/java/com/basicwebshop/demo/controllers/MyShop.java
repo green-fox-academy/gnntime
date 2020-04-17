@@ -14,45 +14,45 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MyShop {
 
   private List<ShopItems> shopItemsList = new ArrayList<>();
-  private List<ShopItems> shopItemsList2 = fillItemsList();
+  private List<ShopItems> ItemsList = fillItemsList();
 
   @RequestMapping(value="/webshop", method = RequestMethod.GET)
   public String shop(Model model) {
-    model.addAttribute("items", shopItemsList2);
+    model.addAttribute("items", ItemsList);
     return "index";
   }
 
   @RequestMapping(value="/webshop/only-available", method = RequestMethod.GET)
-  public String shop2(Model model) {
-    List<ShopItems> shopItemsList3 = shopItemsList2.stream()
+  public String shopOnlyAvailable(Model model) {
+    List<ShopItems> shopItemsListOnlyAvailableProducts = ItemsList.stream()
         .filter(e -> e.getQuantityOfStock() > 0)
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList3);
+    model.addAttribute("items", shopItemsListOnlyAvailableProducts);
     return "index";
   }
 
   @RequestMapping(value="/webshop/cheapest-first", method = RequestMethod.GET)
-  public String shop3(Model model) {
-    List<ShopItems> shopItemsList4 = shopItemsList2.stream()
+  public String shopCheapestFirst(Model model) {
+    List<ShopItems> shopItemsListOrderedByCheapestFirst = ItemsList.stream()
         .sorted(Comparator.comparingDouble(ShopItems::getPrice))
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList4);
+    model.addAttribute("items", shopItemsListOrderedByCheapestFirst);
     return "index";
   }
 
   @RequestMapping(value="/webshop/contains-nike", method = RequestMethod.GET)
-  public String shop4(Model model) {
-    List<ShopItems> shopItemsList5 = shopItemsList2.stream()
+  public String shopContainsNike(Model model) {
+    List<ShopItems> shopItemsListThatContainsNike = ItemsList.stream()
             .filter(e -> e.getName().toLowerCase().contains("nike") || e.getDescription()
             .toLowerCase().contains("nike"))
             .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList5);
+    model.addAttribute("items", shopItemsListThatContainsNike);
     return "index";
   }
 
   @RequestMapping(value="/webshop/average-price", method = RequestMethod.GET)
-  public String shop5(Model model) {
-     double average = shopItemsList2.stream()
+  public String shopAveragePrice(Model model) {
+     double average = ItemsList.stream()
          .filter(e -> e.getQuantityOfStock() > 0)
          .mapToDouble(ShopItems::getPrice)
          .average()
@@ -62,8 +62,8 @@ public class MyShop {
   }
 
   @RequestMapping(value="/webshop/most-expensive-available", method = RequestMethod.GET)
-  public String shop6(Model model) {
-    String mostExpensive = shopItemsList2.stream()
+  public String shopMostExpensiveAvailable(Model model) {
+    String mostExpensive = ItemsList.stream()
         .max(Comparator.comparingDouble(ShopItems::getPrice))
         .get().getName();
     model.addAttribute("mostExpensive", mostExpensive);
@@ -71,88 +71,88 @@ public class MyShop {
   }
 
   @RequestMapping(value="/search", method = RequestMethod.POST)
-  public String shop7(@RequestParam("name") String name, Model model) {
-    List<ShopItems> shopItemsList5 = shopItemsList2.stream()
+  public String shopSearch(@RequestParam("name") String name, Model model) {
+    List<ShopItems> shopItemsListContainsSearch = ItemsList.stream()
             .filter(e -> e.getName().toLowerCase().contains(name.toLowerCase()) || e.getDescription()
             .toLowerCase().contains(name.toLowerCase()))
             .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList5);
+    model.addAttribute("items", shopItemsListContainsSearch);
     return "index";
   }
 
   @RequestMapping(value="/more-filters", method = RequestMethod.GET)
-  public String shop8(Model model) {
-    model.addAttribute("items", shopItemsList2);
+  public String shopDefault(Model model) {
+    model.addAttribute("items", ItemsList);
     return "index4";
   }
 
   @RequestMapping(value="/filter-by-type/clothes-and-shoes")
-  public String shop9(Model model) {
-    List<ShopItems> shopItemsList6 = shopItemsList2.stream()
+  public String shopClothesAndShoes(Model model) {
+    List<ShopItems> clothesAndShoesItemsList = ItemsList.stream()
         .filter(e-> e.getType().equals("clothes-and-shoes"))
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList6);
+    model.addAttribute("items", clothesAndShoesItemsList);
     return "index4";
   }
 
   @RequestMapping(value="/filter-by-type/electronics")
-  public String shop10(Model model) {
-    List<ShopItems> shopItemsList7 = shopItemsList2.stream()
+  public String shopElectronics(Model model) {
+    List<ShopItems> electronicsItemsList = ItemsList.stream()
         .filter(e-> e.getType().equals("electronics"))
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList7);
+    model.addAttribute("items", electronicsItemsList);
     return "index4";
-  }
+}
 
   @RequestMapping(value="/filter-by-type/beverages-and-snacks")
-  public String shop11(Model model) {
-    List<ShopItems> shopItemsList8 = shopItemsList2.stream()
+  public String shopBevaragesAndSnacks(Model model) {
+    List<ShopItems> beverageAndSnacksItemList = ItemsList.stream()
         .filter(e-> e.getType().equals("beverages-and-snacks"))
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList8);
+    model.addAttribute("items", beverageAndSnacksItemList);
     return "index4";
   }
 
   @RequestMapping(value="/euro", method = RequestMethod.GET)
-  public String shop12(Model model) {
-    List<ShopItems> shopItemsList9 = shopItemsList2.stream()
+  public String shopEuro(Model model) {
+    List<ShopItems> shopItemsListWithPriceInEuro = ItemsList.stream()
         .map(e -> new ShopItems(e.getName(), e.getDescription(), e.getPriceInEuro(),
             e.getQuantityOfStock(), e.getType()))
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList9);
+    model.addAttribute("items", shopItemsListWithPriceInEuro);
     return "index4";
   }
 
   @RequestMapping(value="/original-currency", method = RequestMethod.GET)
-  public String shop13(Model model) {
-    model.addAttribute("items", shopItemsList2);
+  public String shopOriginalCurrency(Model model) {
+    model.addAttribute("items", ItemsList);
     return "index4";
   }
 
   @RequestMapping(value="/above", method = RequestMethod.POST)
-  public String shop14(@RequestParam("price") int price, Model model) {
-    List<ShopItems> shopItemsList10 = shopItemsList2.stream()
+  public String shopAbove(@RequestParam("price") int price, Model model) {
+    List<ShopItems> shopItemsListAbovePriceGiven = ItemsList.stream()
         .filter(e -> e.getPrice() < price)
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList10);
+    model.addAttribute("items", shopItemsListAbovePriceGiven);
     return "index4";
   }
 
   @RequestMapping(value="/below", method = RequestMethod.POST)
-  public String shop15(@RequestParam("price") int price, Model model) {
-    List<ShopItems> shopItemsList11 = shopItemsList2.stream()
+  public String shopBelow(@RequestParam("price") int price, Model model) {
+    List<ShopItems> shopItemsListBelowPriceGiven = ItemsList.stream()
         .filter(e -> e.getPrice() > price)
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList11);
+    model.addAttribute("items", shopItemsListBelowPriceGiven);
     return "index4";
   }
 
   @RequestMapping(value="/exactly", method = RequestMethod.POST)
-  public String shop16(@RequestParam("price") int price, Model model) {
-    List<ShopItems> shopItemsList12 = shopItemsList2.stream()
+  public String shopExactly(@RequestParam("price") int price, Model model) {
+    List<ShopItems> shopItemsListWithExactlyPriceGiven = ItemsList.stream()
         .filter(e -> e.getPrice() == price)
         .collect(Collectors.toList());
-    model.addAttribute("items", shopItemsList12);
+    model.addAttribute("items", shopItemsListWithExactlyPriceGiven);
     return "index4";
   }
 
@@ -163,7 +163,7 @@ public class MyShop {
         "pages", 3000, 2, "electronics"));
     shopItemsList.add(new ShopItems("Coca cola", "0.5l standard coke", 25,
         0, "beverages-and-snacks"));
-    shopItemsList.add(new ShopItems("Wokin", "Chicken with fried rice and WOKIN " +
+    shopItemsList.add(new ShopItems("Wokin", "Chicken with fried rice and WOKIN" +
         "sauce", 119, 100, "beverages-and-snacks"));
     shopItemsList.add(new ShopItems("T-shirt", "Blue with a corgi on a bike",
         300, 1, "clothes-and-shoes"));
