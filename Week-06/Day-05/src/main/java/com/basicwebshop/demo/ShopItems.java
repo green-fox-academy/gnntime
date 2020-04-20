@@ -32,6 +32,10 @@ public class ShopItems {
     return price;
   }
 
+  public void setPriceToEuro() {
+    price = price / 360;
+  }
+
   public double getPriceInEuro() {
     double euroPrice = getPrice() / 360;
     DecimalFormat format = new DecimalFormat("0.00");

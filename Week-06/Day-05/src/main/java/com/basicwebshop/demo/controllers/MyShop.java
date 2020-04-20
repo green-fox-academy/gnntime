@@ -117,20 +117,27 @@ public class MyShop {
   }
 
   @RequestMapping(value="/search-by-price", method = RequestMethod.POST)
-  public String shopPriceSearch(@RequestParam(defaultValue = "0") int price,
+  public String shopPriceSearch(@RequestParam(defaultValue="0") int inputPrice,
+                                @RequestParam(value="currency") String currencyChoice,
                                 @RequestParam(value="searchType") String searchType, Model model) {
-    List<ShopItems> shopItemsListPriceSearch = new ArrayList<>();
+    List<ShopItems> shopItemsListPriceSearch = ItemsList;
+    if (currencyChoice.equals("EURO")) {
+      for (ShopItems items : shopItemsListPriceSearch) {
+        items.setAndGetCurrencyInEuro();
+        items.setPriceToEuro();
+      }
+    }
     if (searchType.equals("above")) {
       shopItemsListPriceSearch = ItemsList.stream()
-          .filter(e -> e.getPrice() > price)
+          .filter(e -> e.getPrice() > inputPrice)
           .collect(Collectors.toList());
     } else if (searchType.equals("below")) {
       shopItemsListPriceSearch = ItemsList.stream()
-          .filter(e -> e.getPrice() < price)
+          .filter(e -> e.getPrice() < inputPrice)
           .collect(Collectors.toList());
     } else {
       shopItemsListPriceSearch = ItemsList.stream()
-          .filter(e -> e.getPrice() == price)
+          .filter(e -> e.getPrice() == inputPrice)
           .collect(Collectors.toList());
     }
     model.addAttribute("items", shopItemsListPriceSearch);

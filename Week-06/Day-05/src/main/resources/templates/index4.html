@@ -11,12 +11,17 @@
 <a href="http://localhost:8080/filter-by-type?type=beverages-and-snacks">beverages and snacks</a>
 <a href="http://localhost:8080/euro">euro</a>
 <a href="http://localhost:8080/original-currency">original currency</a>
-<form method="post" action="/search-by-price">
+<form method="post" action="/search-by-price" id="searchByPrice">
     <input type="submit" name="searchType" value="above">
     <input type="submit" name="searchType" value="below">
     <input type="submit" name="searchType" value="exactly">
     <label for="inputNumber">Search by price </label>
-    <input type="number" id="inputNumber" name="price" placeholder="Eg: 500">
+    <input type="number" id="inputNumber" name="inputPrice" placeholder="Eg: 500">
+    <label for="currencySelect"></label>
+    <select name="currency" id="currencySelect" required>
+        <option value="HUF">HUF</option>
+        <option value="EURO">EURO</option>
+    </select>
 </form>
 <table>
     <th> name </th>
