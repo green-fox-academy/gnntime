@@ -3,14 +3,17 @@
 <head>
     <title>My Shop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <h1><a href="http://localhost:8080/webshop"> My Shop</a><a href="http://localhost:8080/more-filters"> More Filters</a></h1>
-<a href="http://localhost:8080/filter-by-type?type=clothes-and-shoes">clothes and shoes</a>
-<a href="http://localhost:8080/filter-by-type?type=electronics">electronics</a>
-<a href="http://localhost:8080/filter-by-type?type=beverages-and-snacks">beverages and snacks</a>
-<a href="http://localhost:8080/euro">euro</a>
-<a href="http://localhost:8080/original-currency">original currency</a>
+<div class="buttons">
+    <a href="http://localhost:8080/filter-by-type?type=clothes-and-shoes">clothes and shoes</a>
+    <a href="http://localhost:8080/filter-by-type?type=electronics">electronics</a>
+    <a href="http://localhost:8080/filter-by-type?type=beverages-and-snacks">beverages and snacks</a>
+    <a href="http://localhost:8080/euro">euro</a>
+    <a href="http://localhost:8080/original-currency">original currency</a>
+</div>
 <form method="post" action="/search-by-price" id="searchByPrice">
     <input type="submit" name="searchType" value="above">
     <input type="submit" name="searchType" value="below">

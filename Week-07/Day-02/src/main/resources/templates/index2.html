@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8"/>
+</head>
+<h1> Welcome to Lion King's Bank</h1>
+<table>
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>AnimalType</th>
+        <th>King</th>
+        <th>Bad/Good</th>
+    </tr>
+    <tr th:each="account:${list}" th:object="${account}">
+        <td th:text="${accountStat.index}">
+        <td th:text="*{name}"></td>
+        <td th:text="*{balance}"></td>
+        <td th:text="*{animalType}"></td>
+        <td th:text="*{getKingConditional()}"></td>
+        <td th:text="*{isBad()} ? 'bad guy ' : 'good guy' "></td>
+    </tr>
+</table>
+<p>It's raining cash</p>
+<form action="/raise" method="post">
+    <button type="submit">Raise</button>
+</form>
+<h2>Add a bank account:</h2>
+<form action="/add" method="post">
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="name"> <br>
+    <label for="balance">Balance:</label>
+    <input id="balance" type="number" name="balance"> <br>
+    <label for="animalType">Animal Type:</label>
+    <input id="animalType" type="text" name="animalType"> <br>
+    <label for="isKing">Is it a King?</label>
+    <select id="isKing" name="isKing"> <br>
+        <option value="false">false</option>
+        <option value="true">true</option>
+    </select>
+    <label for="isBad">Is it a Bad Character?</label>
+    <select id="isBad" name="isBad"> <br>
+        <option value="false">false</option>
+        <option value="true">true</option>
+    </select>
+    <input type="submit">
+</form>
+</body>
+</html>

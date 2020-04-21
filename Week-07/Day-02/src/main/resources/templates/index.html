@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8"/>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>AnimalType</th>
+    </tr>
+    <tr>
+        <td th:text="${name}"></td>
+        <td th:text="${#numbers.formatDecimal(balance,3,2,'COMMA')} + ' Zebra'"> </td>
+        <td th:text="${type}"></td>
+    </tr>
+</table>
+<p th:utext="${text}"> </p>
+<p th:text="${text}"> </p>
+</body>
+</html>
