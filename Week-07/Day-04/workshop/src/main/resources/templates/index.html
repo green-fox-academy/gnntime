@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>Service Exercise</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8"/>
+</head>
+<body th:style="'background-color:' + ${style} + ';'">
+<a href="/useful"> main page </a>
+<a href="/useful/colored"> color change</a>
+<a href="/useful/email?email=is@this.valid"> email link </a>
+<a href="http://localhost:8080/useful/encode?text=mizumizu&number=1"> encoding </a>
+<a href="http://localhost:8080/useful/decode?text=njavnjav&number=1"> decoding </a>
+<p th:text="${email} + ' ' + ${validation}" th:style="'color:' +${colorOfEmail} + ';'"></p> <br>
+<p th:text="${encode}"></p>
+<p th:text="${decode}"></p>
+</body>
+</html>
