@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Trick Center</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<ul>
+    <li><a th:href="'/?name='+${fox.getName()}">Information</a></li>
+    <li><a th:href="'/nutrition&name='+${fox.getName()}">Nutrition Store</a></li>
+    <li><a th:href="'/trickcenter&name='+${fox.getName()}">Trick Center</a></li>
+</ul>
+
+<img src="/tricks.png" alt="picture of tricks">
+<h1> Welcome to the Trick Center </h1>
+<p th:text="'Here you can teach ' + ${fox.getName()} + ' some tricks'">
+<form action="/trickcenter&name=" method="post">
+    <label for="trickSelect"></label>
+    <select name="trick" id="trickSelect">
+        <option th:each="trick:${tricks}" th:value="${trick.getName()}">
+            <span th:text="${trick.getName()}"> </span>
+        </option>
+    </select>
+    <input type="submit" value="Teach">
+</form>
+</body>
+</html>

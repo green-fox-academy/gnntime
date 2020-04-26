@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fox Club</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8"/>
+</head>
+<body>
+<a href="/?name="> Information</a>
+<img src="/nutri.jpg" alt="picture of foods">
+<h1> Welcome to the Nutrition Store </h1>
+<p th:text="'Here you can change ' + ${fox.getName()} + '\'s diet' ">
+
+<ul>
+    <li><a th:href="'/?name='+${fox.getName()}">Information</a></li>
+    <li><a th:href="'/nutrition&name='+${fox.getName()}">Nutrition Store</a></li>
+    <li><a th:href="'/trickcenter&name='+${fox.getName()}">Trick Center</a></li>
+</ul>
+
+<form action="/nutrition&name=" method="post">
+<label for="Food">Food</label>
+<select id="Food" name="food">
+    <option th:text="${fox.getFood()}" autofocus></option>
+    <option value="kiwis">kiwis</option>
+    <option value="snickers">snickers</option>
+</select>
+<label for="Drink">Drink</label>
+<select id="Drink" name="drink">
+    <option th:text="${fox.getDrink()}" autofocus></option>
+    <option value="water">water</option>
+    <option value="coke">coke</option>
+</select>
+<input type="submit" value="Change">
+</form>
+
+</body>
+</html>

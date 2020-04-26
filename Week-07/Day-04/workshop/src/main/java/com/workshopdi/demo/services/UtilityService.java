@@ -10,7 +10,6 @@ public class UtilityService {
 
   private List<String> colors;
   private Random random;
-  private boolean validateCondition;
 
   public UtilityService() {
     colors = new ArrayList<>();
