@@ -7,19 +7,38 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<img src="todos.png" alt="picture of todos">
 <h1> Todos for today: </h1>
 <button> <a href="/?isActive=true"> Active Todos</a></button>
 <button> <a href="/add"> Add Todo</a></button>
+<button> <a href="/listassignees"> List Assignees </a></button>
+<form action="/search" method="post">
+    <label for="searchBar"> Search todos</label>
+    <input id="searchBar" type="text" name="word">
+
+    <label for="searchSelect"></label>
+    <select id="searchSelect" name="searchType">
+        <option value="title">Title</option>
+        <option value="content">Content</option>
+        <option value="description">Description</option>
+    </select>
+
+    <input type="submit" value="Search">
+</form>
 <table>
     <tr>
         <th>ID</th>
         <th>Title</th>
+        <th>Content</th>
+        <th>Description</th>
         <th>Urgent</th>
         <th>Done</th>
     </tr>
     <tr th:each="todo:${todos}">
         <td th:text="${todo.id}"></td>
         <td th:text="${todo.title}"></td>
+        <td th:text="${todo.content}"></td>
+        <td th:text="${todo.description}"></td>
         <td th:text="${todo.urgent}"></td>
         <td th:text="${todo.done}"></td>
         <td><button><a th:href="${todo.id} + '/delete'">Delete</a></button></td>

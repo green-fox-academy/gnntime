@@ -2,11 +2,12 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>List todos</title>
+    <title>Edit the doto</title>
     <link rel="stylesheet" th:href="@{/style.css}" />
     <meta charset="UTF-8">
 </head>
 <body>
+<img src="wrench.png" alt="picture of a wrench icon">
 <h1> Edit the Todo </h1>
 <form th:object="${todo}" th:action="@{'/' + ${todo.getId()} + '/edit'}" method="post">
 

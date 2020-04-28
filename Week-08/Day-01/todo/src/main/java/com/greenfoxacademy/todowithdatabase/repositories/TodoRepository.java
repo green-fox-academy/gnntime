@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface TodoRepository extends CrudRepository<Todo, Long> {
   Iterable<Todo> getTodosByDoneIsFalse();
   Todo getTodoById(Long id);
+  Iterable<Todo> getTodosByTitleContains(String title);
+  Iterable<Todo> getTodosByContentContains(String content);
+  Iterable<Todo> getTodosByDescriptionContains(String desription);
 }

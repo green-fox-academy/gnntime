@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit the Assignee</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<img src="wrench.png" alt="picture of a wrench icon">
+<h1> Edit the Assignee </h1>
+<form th:object="${assignee}" th:action="@{'/' + ${assignee.getId()} + '/editassignee'}" method="post">
+
+    <label for="name">Name</label>
+    <input id="name" type="text" th:field="*{name}">
+
+    <label for="email">Email</label>
+    <input id="email" type="email" th:field="*{email}">
+
+    <input type="submit">
+</form>
+</body>
+</html>
