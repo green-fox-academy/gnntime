@@ -4,6 +4,9 @@ import com.greenfoxacademy.todowithdatabase.models.Assignee;
 import com.greenfoxacademy.todowithdatabase.models.Todo;
 import com.greenfoxacademy.todowithdatabase.repositories.AssigneeRepository;
 import com.greenfoxacademy.todowithdatabase.repositories.TodoRepository;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +34,13 @@ public class TodoService {
     todoRepository.save(new Todo("vacuum the carpet", true, false));
     todoRepository.save(new Todo("vacuum cleaner / hoover", false, false));
     todoRepository.save(new Todo("dust the furniture", false, false));
-    todoRepository.save(new Todo ("Expanded Todo do", "testing", "whacky todo", false, false));
-    todoRepository.save(new Todo ("Another longer todo do", "testing 2", "whacky todo", true, true));
+    todoRepository.save(new Todo ("Expanded Todo do", "testing",
+        "whacky todo", false, false));
+    todoRepository.save(new Todo ("Another longer todo do", "testing 2",
+        "whacky todo", true, true));
+    todoRepository.save(new Todo ("Test the Date", "figure out how to compare dates",
+        "testing todo", false, false, new Date(2020,
+        Calendar.DECEMBER, 31)));
     assigneeRepository.save(new Assignee("John Boyega","johnboyega@gmail.com"));
     assigneeRepository.save(new Assignee("Bruce Lee","brucelee@gmail.com"));
   }
@@ -83,5 +91,14 @@ public class TodoService {
 
   public Assignee getAssigneeById(Long id) {
     return assigneeRepository.getAssigneeById(id);
+  }
+
+  public void addAssigneeToTodo(Assignee assignee, Todo todo) {
+    todo.setAssignee(assignee);
+    List<Todo> todoList = assignee.getTodoList();
+    todoList.add(todo);
+    assignee.setTodoList(todoList);
+    assigneeRepository.save(assignee);
+    todoRepository.save(todo);
   }
 }

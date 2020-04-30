@@ -1,8 +1,13 @@
 package com.greenfoxacademy.todowithdatabase.models;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Assignee {
@@ -11,6 +16,8 @@ public class Assignee {
   private Long id;
   private String name;
   private String email;
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "assignee", cascade = CascadeType.ALL)
+  private List<Todo> todoList = new ArrayList<>();
 
   public Assignee() {
   }
@@ -40,7 +47,16 @@ public class Assignee {
     return email;
   }
 
+
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public List<Todo> getTodoList() {
+    return todoList;
+  }
+
+  public void setTodoList(List<Todo> todoList) {
+    this.todoList = todoList;
   }
 }

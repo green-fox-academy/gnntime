@@ -54,13 +54,14 @@ public class TodoController {
   public String getEdit(@PathVariable(value = "id") Long id,
                         Model model) {
     model.addAttribute("todo", todoService.getTodoById(id));
+    model.addAttribute("assignees", todoService.getAllAssignees());
     return "edittodo";
   }
 
   @PostMapping("{id}/edit")
   public String postEdit(@ModelAttribute Todo todo,
-                         @PathVariable(value = "id") Long id) {
-    todoService.saveTodo(todo);
+                         @RequestParam(name ="assigneeSelect") Long id) {
+    todoService.addAssigneeToTodo(todoService.getAssigneeById(id), todo);
     return "redirect:/";
   }
 
@@ -108,5 +109,13 @@ public class TodoController {
                                  @PathVariable(value = "id") Long id) {
     todoService.saveAssignee(assignee);
     return "redirect:/listassignees";
+  }
+
+  @GetMapping("/assigneeinfo/{id}")
+  public String getAssigneeInfo(@PathVariable(value = "id") Long id,
+                                Model model) {
+    model.addAttribute("assignee", todoService.getAssigneeById(id));
+    model.addAttribute("assigneetodolist", todoService.getAssigneeById(id).getTodoList());
+    return "assigneeinfo";
   }
 }

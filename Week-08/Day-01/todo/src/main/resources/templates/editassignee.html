@@ -9,7 +9,7 @@
 <body>
 <img src="wrench.png" alt="picture of a wrench icon">
 <h1> Edit the Assignee </h1>
-<form th:object="${assignee}" th:action="@{'/' + ${assignee.getId()} + '/editassignee'}" method="post">
+<form th:object="${assignee}" th:action="@{'/' + ${assignee.id} + '/editassignee'}" method="post">
 
     <label for="name">Name</label>
     <input id="name" type="text" th:field="*{name}">

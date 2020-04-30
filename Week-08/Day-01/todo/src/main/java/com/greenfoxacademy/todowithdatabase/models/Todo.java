@@ -1,9 +1,15 @@
 package com.greenfoxacademy.todowithdatabase.models;
 
+import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Todo {
@@ -16,6 +22,13 @@ public class Todo {
   private String description;
   private boolean urgent;
   private boolean done;
+  @Temporal(value = TemporalType.TIMESTAMP)
+  private Date dateOfCreation = new Date();
+  @Temporal(value = TemporalType.DATE)
+  private Date dueDate;
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn
+  private Assignee assignee;
 
   public Todo() {
   }
@@ -36,6 +49,16 @@ public class Todo {
     this.description = description;
     this.urgent = urgent;
     this.done = done;
+  }
+
+  public Todo(String title, String content, String description, boolean urgent, boolean done,
+              Date dueDate) {
+    this.title = title;
+    this.content = content;
+    this.description = description;
+    this.urgent = urgent;
+    this.done = done;
+    this.dueDate = dueDate;
   }
 
   public Long getId() {
@@ -84,5 +107,29 @@ public class Todo {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
+  }
+
+  public Date getDateOfCreation() {
+    return dateOfCreation;
+  }
+
+  public void setDateOfCreation(Date dateOfCreation) {
+    this.dateOfCreation = dateOfCreation;
+  }
+
+  public Date getDueDate() {
+    return dueDate;
+  }
+
+  public void setDueDate(String Date) {
+    this.dueDate = dueDate;
   }
 }

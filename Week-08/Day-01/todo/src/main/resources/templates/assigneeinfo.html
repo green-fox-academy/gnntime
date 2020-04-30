@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Assignee Info</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2 th:text="${assignee.name} +' has the following todos: '"> </h2>
+<ul th:each="todo:${assigneetodolist}">
+    <li th:text="${todo.title}"></li>
+</ul>
+<button><a href="/list">Todos</a></button>
+<button><a href="/listassignees">Assignees</a></button>
+</body>
+</html>

@@ -19,7 +19,9 @@
     </tr>
     <tr th:each="assignee:${assignees}">
         <td th:text="${assignee.id}"></td>
-        <td th:text="${assignee.name}"></td>
+        <td>
+            <a th:text="${assignee.name}" th:href="'assigneeinfo/' + ${assignee.id}"></a>
+        </td>
         <td th:text="${assignee.email}"></td>
         <td><button><a th:href="${assignee.id} + '/deleteassignee'">Delete</a></button></td>
         <td><button><a th:href="${assignee.id} + '/editassignee'">Edit</a></button></td>

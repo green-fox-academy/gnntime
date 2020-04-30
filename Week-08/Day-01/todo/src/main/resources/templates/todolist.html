@@ -33,6 +33,9 @@
         <th>Description</th>
         <th>Urgent</th>
         <th>Done</th>
+        <th>Assignee</th>
+        <th>Time of Creation</th>
+        <th>Due Date</th>
     </tr>
     <tr th:each="todo:${todos}">
         <td th:text="${todo.id}"></td>
@@ -41,6 +44,11 @@
         <td th:text="${todo.description}"></td>
         <td th:text="${todo.urgent}"></td>
         <td th:text="${todo.done}"></td>
+        <td th:if="${todo.assignee != null}" ><a th:text="${todo.assignee.name}"
+                                                 th:href="'assigneeinfo/' + ${todo.assignee.id}"></a></td>
+        <td th:if="${todo.assignee == null}" th:text="|Not Assigned|"></td>
+        <td th:text="${todo.dateOfCreation}"></td>
+        <td th:text="${todo.dueDate}"></td>
         <td><button><a th:href="${todo.id} + '/delete'">Delete</a></button></td>
         <td><button><a th:href="${todo.id} + '/edit'">Edit</a></button></td>
     </tr>
