@@ -1,6 +1,5 @@
 package com.greenfoxacademy.todowithdatabase.models;
 
-import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -73,40 +72,20 @@ public class Todo {
     return title;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
   public boolean isUrgent() {
     return urgent;
-  }
-
-  public void setUrgent(boolean urgent) {
-    this.urgent = urgent;
   }
 
   public boolean isDone() {
     return done;
   }
 
-  public void setDone(boolean done) {
-    this.done = done;
-  }
-
   public String getContent() {
     return content;
   }
 
-  public void setContent(String content) {
-    this.content = content;
-  }
-
   public String getDescription() {
     return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public Assignee getAssignee() {
@@ -121,15 +100,8 @@ public class Todo {
     return dateOfCreation;
   }
 
-  public void setDateOfCreation(Date dateOfCreation) {
-    this.dateOfCreation = dateOfCreation;
-  }
-
   public String getDueDate() {
     return dueDate;
   }
 
-  public void setDueDate(String dueDate) {
-    this.dueDate = dueDate;
-  }
 }
