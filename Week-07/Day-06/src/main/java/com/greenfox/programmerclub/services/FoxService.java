@@ -57,4 +57,6 @@ public class FoxService {
     System.out.println("selected the fox");
     return listOfFoxes.stream().anyMatch(fox -> fox.getName().equals(name));
   }
+
+
 }

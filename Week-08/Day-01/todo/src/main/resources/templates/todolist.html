@@ -21,6 +21,8 @@
         <option value="title">Title</option>
         <option value="content">Content</option>
         <option value="description">Description</option>
+        <option value="dueDate">DueDate</option>
+        <option value="assignee">Assignee</option>
     </select>
 
     <input type="submit" value="Search">
@@ -34,7 +36,7 @@
         <th>Urgent</th>
         <th>Done</th>
         <th>Assignee</th>
-        <th>Time of Creation</th>
+        <th>Date Created on</th>
         <th>Due Date</th>
     </tr>
     <tr th:each="todo:${todos}">

@@ -20,10 +20,10 @@
     <label for="done">Done</label>
     <input id="done" type="checkbox" th:field="*{done}">
 
-    <label for="dueDateSet"></label>
+    <label for="dueDateSet">due date</label>
     <input id="dueDateSet" type="date" th:field="*{dueDate}">
-    
-    <label for="assigneeSelect"></label>
+
+    <label for="assigneeSelect">Select an Assignee</label>
     <select id="assigneeSelect" name="assigneeSelect">
         <option th:each="assignee:${assignees}" th:text="${assignee.name}" th:field="*{assignee}" th:value="${assignee.id}">
         </option>

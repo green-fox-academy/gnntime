@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todowithdatabase.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +25,7 @@ public class Todo {
   private boolean done;
   @Temporal(value = TemporalType.TIMESTAMP)
   private Date dateOfCreation = new Date();
-  @Temporal(value = TemporalType.DATE)
-  private Date dueDate;
+  private String dueDate;
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn
   private Assignee assignee;
@@ -52,7 +52,7 @@ public class Todo {
   }
 
   public Todo(String title, String content, String description, boolean urgent, boolean done,
-              Date dueDate) {
+              String dueDate) {
     this.title = title;
     this.content = content;
     this.description = description;
@@ -125,11 +125,11 @@ public class Todo {
     this.dateOfCreation = dateOfCreation;
   }
 
-  public Date getDueDate() {
+  public String getDueDate() {
     return dueDate;
   }
 
-  public void setDueDate(String Date) {
+  public void setDueDate(String dueDate) {
     this.dueDate = dueDate;
   }
 }

@@ -4,8 +4,6 @@ import com.greenfoxacademy.todowithdatabase.models.Assignee;
 import com.greenfoxacademy.todowithdatabase.models.Todo;
 import com.greenfoxacademy.todowithdatabase.repositories.AssigneeRepository;
 import com.greenfoxacademy.todowithdatabase.repositories.TodoRepository;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,9 +36,6 @@ public class TodoService {
         "whacky todo", false, false));
     todoRepository.save(new Todo ("Another longer todo do", "testing 2",
         "whacky todo", true, true));
-    todoRepository.save(new Todo ("Test the Date", "figure out how to compare dates",
-        "testing todo", false, false, new Date(2020,
-        Calendar.DECEMBER, 31)));
     assigneeRepository.save(new Assignee("John Boyega","johnboyega@gmail.com"));
     assigneeRepository.save(new Assignee("Bruce Lee","brucelee@gmail.com"));
   }
@@ -73,6 +68,10 @@ public class TodoService {
         return todoRepository.getTodosByContentContains(searchWord);
       case "description":
         return todoRepository.getTodosByDescriptionContains(searchWord);
+      case "dueDate":
+        return todoRepository.getTodosByDueDateContains(searchWord);
+      case "assignee":
+        return todoRepository.findAllByAssigneeNameContains(searchWord);
     }
     return todoRepository.findAll();
   }

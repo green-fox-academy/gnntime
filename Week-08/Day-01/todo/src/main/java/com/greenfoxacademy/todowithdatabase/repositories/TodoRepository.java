@@ -11,4 +11,6 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
   Iterable<Todo> getTodosByTitleContains(String title);
   Iterable<Todo> getTodosByContentContains(String content);
   Iterable<Todo> getTodosByDescriptionContains(String desription);
+  Iterable<Todo> getTodosByDueDateContains(String dueDate);
+  Iterable<Todo> findAllByAssigneeNameContains(String assigneeName);
 }
