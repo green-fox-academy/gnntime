@@ -104,4 +104,31 @@ public class Todo {
     return dueDate;
   }
 
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setUrgent(boolean urgent) {
+    this.urgent = urgent;
+  }
+
+  public void setDone(boolean done) {
+    this.done = done;
+  }
+
+  public void setDateOfCreation(Date dateOfCreation) {
+    this.dateOfCreation = dateOfCreation;
+  }
+
+  public void setDueDate(String dueDate) {
+    this.dueDate = dueDate;
+  }
 }

@@ -13,11 +13,20 @@
     <label for="title">Title</label>
     <input id="title" type="text" th:field="*{title}">
 
+    <label for="content">Content</label>
+    <input id="content" type="text" th:field="*{content}">
+
+    <label for="description">Description</label>
+    <input id="description" type="text" th:field="*{description}">
+
     <label for="urgent">Urgent</label>
     <input id="urgent" type="checkbox" th:field="*{urgent}">
 
     <label for="done">Done</label>
     <input id="done" type="checkbox" th:field="*{done}">
+
+    <label for="dueDate">Due Date</label>
+    <input id="dueDate" type="date" th:field="*{dueDate}">
 
     <input type="submit">
 </form>
