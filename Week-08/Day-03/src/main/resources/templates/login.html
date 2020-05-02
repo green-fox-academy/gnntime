@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign in to Reddit Clone</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1> Welcome to the Reddit Clone!</h1>
+<p>Please sign in:</p>
+<form action="/" method="post">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="username">
+    <input type="submit">
+</form>
+<p>If you don't have a Username yet please <a href="/createuser">Register</a></p>
+</body>
+</html>

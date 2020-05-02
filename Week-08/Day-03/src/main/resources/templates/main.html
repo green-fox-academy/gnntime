@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<p th:text="'Logged in as ' + ${user.name}"><button><a href="/">Log out</a> </button></p>
+<h1> Trending Posts </h1>
+<table class="table">
+    <tr>
+        <th scope="col"> Score </th>
+        <th scope="col"> Vote </th>
+        <th scope="col"> Title </th>
+        <th scope="col"> Posted By: </th>
+    </tr>
+    <tr th:scope="row" th:each="post:${posts}">
+        <td th:text="${post.score}"></td>
+        <td><button><a th:href="|main/${post.id}/plus|">+</a></button><button><a th:href="|main/${post.id}/minus|">-</a></button></td>
+        <td><a th:href="${post.link}" th:text="${post.title}"></a></td>
+        <td th:text="${post.user.name}"></td>
+    </tr>
+</table>
+<button> <a href="/createpost">Create Post</a> </button>
+</body>
+</html>
