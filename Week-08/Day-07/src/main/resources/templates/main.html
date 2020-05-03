@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<p th:text="'Logged in as ' + ${user.userName}"><button><a href="/">Log out</a></button></p>
+<h1> Creature Farm </h1>
+<p th:text="|'This is '${user.listOfCreatures.get(0).getName()}|"></p>
+<p th:text="'Currently he lives on: '"></p>
+<table>
+    <tr th:each="food:${user.getListOfCreatures().get(0).getDiet()}">
+        <td th:text="${food.name}">
+    </tr>
+</table>
+
+</body>
+</html>

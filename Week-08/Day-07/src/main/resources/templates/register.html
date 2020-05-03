@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register an account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<form action="/register" th:object="${user}" method="post">
+    <label for="userName">Username</label>
+    <input id="userName" type="text" th:field="*{userName}"> <br>
+    <label for="password1">Password</label>
+    <input id="password1" type="password" th:field="*{password}"> <br>
+    <label for="password2">Repeat password</label>
+    <input id="password2" type="password" th:field="*{password}"> <br>
+    <input type="submit" value="Create">
+</form>
+</body>
+</html>

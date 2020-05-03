@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Welcome to the Programmer's Club</h1>
+<p> Please sign in to your Account:</p>
+<form action="/" method="post">
+    <label for="userName">Username</label>
+    <input id="userName" type="text" name="username"> <br>
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password"> <br>
+    <input type="submit" value="Go">
+</form>
+<p> If you don't have an Account yet please <a href="/register">Register</a></p>
+</body>
+</html>

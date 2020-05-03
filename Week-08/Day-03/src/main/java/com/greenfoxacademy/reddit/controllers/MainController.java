@@ -65,15 +65,13 @@ public class MainController {
   }
 
   @GetMapping("/main/{id}/plus")
-  public String getMainPlus(@PathVariable(value = "id") Long id,
-                            Model model) {
+  public String getMainPlus(@PathVariable(value = "id") Long id) {
     redditService.upvotePost(id);
     return "redirect:/main";
   }
 
   @GetMapping("/main/{id}/minus")
-  public String getMainMinus(@PathVariable(value = "id") Long id,
-                             Model model) {
+  public String getMainMinus(@PathVariable(value = "id") Long id) {
     redditService.downvotePost(id);
     return "redirect:/main";
   }

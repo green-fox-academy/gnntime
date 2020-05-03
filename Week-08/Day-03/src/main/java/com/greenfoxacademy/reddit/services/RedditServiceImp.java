@@ -43,8 +43,8 @@ public class RedditServiceImp implements RedditService {
   @Override
   public void createPost(Post post) {
     post.setUser(activeUser);
-   postRepository.save(post);
-   addPostToUserPosts(post);
+    postRepository.save(post);
+    addPostToUserPosts(post);
   }
 
   @Override
