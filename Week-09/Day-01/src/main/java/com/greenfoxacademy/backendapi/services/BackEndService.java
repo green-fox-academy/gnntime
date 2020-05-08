@@ -21,6 +21,9 @@ import org.springframework.stereotype.Service;
 public class BackEndService {
   private LogRepository logRepository;
 
+  public BackEndService() {
+  }
+
   @Autowired
   public BackEndService(LogRepository logRepository) {
     this.logRepository = logRepository;
