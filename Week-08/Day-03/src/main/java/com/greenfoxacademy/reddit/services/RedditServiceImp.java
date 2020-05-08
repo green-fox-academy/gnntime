@@ -1,7 +1,9 @@
 package com.greenfoxacademy.reddit.services;
 
+import com.greenfoxacademy.reddit.models.ErrorMessage;
 import com.greenfoxacademy.reddit.models.Post;
 import com.greenfoxacademy.reddit.models.User;
+import com.greenfoxacademy.reddit.repositories.ErrorMessageRepository;
 import com.greenfoxacademy.reddit.repositories.PostRepository;
 import com.greenfoxacademy.reddit.repositories.UserRepository;
 import java.util.List;
@@ -12,12 +14,15 @@ import org.springframework.stereotype.Service;
 public class RedditServiceImp implements RedditService {
   private UserRepository userRepository;
   private PostRepository postRepository;
+  private ErrorMessageRepository errorMessageRepository;
   private User activeUser;
 
   @Autowired
-  RedditServiceImp(UserRepository userRepository, PostRepository postRepository) {
+  RedditServiceImp(UserRepository userRepository, PostRepository postRepository,
+                   ErrorMessageRepository errorMessageRepository) {
     this.userRepository = userRepository;
     this.postRepository = postRepository;
+    this.errorMessageRepository = errorMessageRepository;
   }
 
   @Override
@@ -26,8 +31,19 @@ public class RedditServiceImp implements RedditService {
   }
 
   @Override
+  public User getUserById(Long id) {
+    return userRepository.getUserById(id);
+  }
+
+
+  @Override
   public void loadUser(User user) {
     this.activeUser = user;
+  }
+
+  @Override
+  public boolean doesUserExistsWithUserName(String userName) {
+    return userRepository.existsByName(userName);
   }
 
   @Override
@@ -52,11 +68,12 @@ public class RedditServiceImp implements RedditService {
     List<Post> changedPosts = activeUser.getPosts();
     changedPosts.add(post);
     activeUser.setPosts(changedPosts);
+    userRepository.save(activeUser);
   }
 
   @Override
-  public List<Post> getPostsByScoreAfterOrderByScoreDesc(int number) {
-    return postRepository.getPostsByScoreAfterOrderByScoreDesc(number);
+  public List<Post> getPosts() {
+    return postRepository.findAllByOrderByScoreDesc();
   }
 
   @Override
@@ -70,4 +87,15 @@ public class RedditServiceImp implements RedditService {
     postRepository.getPostById(id).decrementScore();
     postRepository.save(postRepository.getPostById(id));
   }
+
+  @Override
+  public void createErrorMessage(String message) {
+    errorMessageRepository.save(new ErrorMessage(message));
+  }
+
+  @Override
+  public ErrorMessage getErrorMessageByContainsUserName(String userName) {
+    return errorMessageRepository.getByMessageContains(userName);
+  }
+
 }

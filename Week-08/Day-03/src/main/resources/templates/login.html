@@ -3,6 +3,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Sign in to Reddit Clone</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/style.css}" />
     <meta charset="UTF-8">
 </head>
@@ -11,7 +14,7 @@
 <p>Please sign in:</p>
 <form action="/" method="post">
     <label for="username">Username</label>
-    <input id="username" type="text" name="username">
+    <input id="username" type="text" name="userName">
     <input type="submit">
 </form>
 <p>If you don't have a Username yet please <a href="/createuser">Register</a></p>

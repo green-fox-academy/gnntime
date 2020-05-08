@@ -2,20 +2,24 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Create a Post</title>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
     <link rel="stylesheet" th:href="@{/style.css}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
-    <meta charset="UTF-8">
 </head>
 <body>
-<form th:object="${post}" method="post">
-    <label for="postTitle">Title</label>
-    <input id="postTitle" type="text" th:field="*{title}">
-    <label for="postLink">Link</label>
-    <input id="postLink" type="text" th:field="*{link}">
-    <input type="submit" value="Create">
-</form>
+<p th:text="|This is the profile page of ${user.name}|"></p>
+<p th:text="|Number of posts: ${user.posts.size()}, accumulated score: ${user.karma}|">
+<table>
+    <tr>
+        <th> Posts </th>
+    </tr>
+    <tr th:each="post:${user.posts}">
+        <td th:text="*{post.title}">
+    </tr>
+</table>
+<a href="/main"> Go back to Main </a>
 </body>
 </html>

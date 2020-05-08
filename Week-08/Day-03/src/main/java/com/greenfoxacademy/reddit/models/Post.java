@@ -62,11 +62,12 @@ public class Post {
 
   public void incrementScore() {
     this.score++;
+    this.user.incrementKarma();
   }
 
   public void decrementScore() {
-    if (this.score == 1) {
-      setScore(1);
-    } else {this.score--;}
+    if (this.score == -3) {
+      setScore(-3);
+    } else {this.score--; this.user.decrementKarma();}
   }
 }

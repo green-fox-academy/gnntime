@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -27,9 +26,14 @@ public class MainController {
   }
 
   @PostMapping("/")
-  public String postLogin(@RequestParam("username") String userName) {
-    redditService.loadUser(redditService.getUserByName(userName));
-    return "redirect:/main";
+  public String postLogin(String userName) {
+    if (redditService.doesUserExistsWithUserName(userName)) {
+      redditService.loadUser(redditService.getUserByName(userName));
+      return "redirect:/main";
+    } else {
+      redditService.createErrorMessage(userName + " doesn't exist!");
+      return "redirect:/createuser/" + userName;
+    }
   }
 
   @GetMapping("/createuser")
@@ -38,17 +42,31 @@ public class MainController {
     return "createuser";
   }
 
+  @GetMapping("/createuser/{username}")
+  public String getCreateUserUserNameisFilled(@PathVariable("username") String userName,
+                                              Model model) {
+    model.addAttribute("user", new User(userName));
+    model.addAttribute("error", redditService.getErrorMessageByContainsUserName(userName));
+    return "createuser";
+  }
+
   @PostMapping("/createuser")
   public String postCreateUser(@ModelAttribute User user) {
-    redditService.createUser(user);
-    redditService.loadUser(redditService.getUserByName(user.getName()));
-    return "redirect:/main";
+    if (!redditService.doesUserExistsWithUserName(user.getName())) {
+      redditService.createUser(user);
+      redditService.loadUser(redditService.getUserByName(user.getName()));
+      return "redirect:/main";
+    } else {
+      redditService.createErrorMessage("Account with name: " + user.getName() +
+          " already exists. Please choose another User Name");
+      return "redirect:/createuser/" + user.getName();
+    }
   }
 
   @GetMapping("/main")
   public String getMain(Model model) {
     model.addAttribute("user", redditService.getActiveUser());
-    model.addAttribute("posts", redditService.getPostsByScoreAfterOrderByScoreDesc(0));
+    model.addAttribute("posts", redditService.getPosts());
     return "main";
   }
 
@@ -74,5 +92,12 @@ public class MainController {
   public String getMainMinus(@PathVariable(value = "id") Long id) {
     redditService.downvotePost(id);
     return "redirect:/main";
+  }
+
+  @GetMapping("userpage/{id}")
+  public String getUserPage(@PathVariable(value = "id") Long id,
+                            Model model) {
+    model.addAttribute("user", redditService.getUserById(id));
+    return "userpage";
   }
 }

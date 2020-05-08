@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,9 +17,15 @@ public class User {
   private Long id;
   private String name;
   @OneToMany(fetch = FetchType.EAGER)
+  @JoinColumn
   private List<Post> posts = new ArrayList<>();
+  private int karma;
 
   public User() {
+  }
+
+  public User(String name) {
+    this.name = name;
   }
 
   public Long getId() {
@@ -43,5 +50,21 @@ public class User {
 
   public void setPosts(List<Post> posts) {
     this.posts = posts;
+  }
+
+  public int getKarma() {
+    return karma;
+  }
+
+  public void setKarma(int karma) {
+    this.karma = karma;
+  }
+
+  public void incrementKarma() {
+    this.karma++;
+  }
+
+  public void decrementKarma() {
+    this.karma--;
   }
 }

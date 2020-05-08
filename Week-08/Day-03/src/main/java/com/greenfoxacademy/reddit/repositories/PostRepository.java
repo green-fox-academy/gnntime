@@ -5,6 +5,6 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepository extends CrudRepository<Post, Long> {
-  List<Post> getPostsByScoreAfterOrderByScoreDesc(int number);
+  List<Post> findAllByOrderByScoreDesc();
   Post getPostById(Long id);
 }
