@@ -1,7 +1,6 @@
 package com.greenfoxacademy.backendapi;
 
 import com.greenfoxacademy.backendapi.models.DountilResult;
-import com.greenfoxacademy.backendapi.models.Greeter;
 import com.greenfoxacademy.backendapi.models.Until;
 import com.greenfoxacademy.backendapi.models.What;
 import com.greenfoxacademy.backendapi.services.BackEndService;
