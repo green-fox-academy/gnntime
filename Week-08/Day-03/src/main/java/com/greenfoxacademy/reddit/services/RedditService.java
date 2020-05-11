@@ -21,4 +21,6 @@ public interface RedditService {
   void downvotePost(Long id);
   void createErrorMessage(String message);
   ErrorMessage getErrorMessageByContainsUserName(String username);
+  Post getPostById(Long id);
+
 }

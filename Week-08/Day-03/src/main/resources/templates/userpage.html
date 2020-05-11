@@ -14,10 +14,10 @@
 <p th:text="|Number of posts: ${user.posts.size()}, accumulated score: ${user.karma}|">
 <table>
     <tr>
-        <th> Posts </th>
+        <th th:scope="col"> Posts </th>
     </tr>
     <tr th:each="post:${user.posts}">
-        <td th:text="*{post.title}">
+        <td th:scope="row" th:text="*{post.title}">
     </tr>
 </table>
 <a href="/main"> Go back to Main </a>

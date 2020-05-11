@@ -35,7 +35,6 @@ public class RedditServiceImp implements RedditService {
     return userRepository.getUserById(id);
   }
 
-
   @Override
   public void loadUser(User user) {
     this.activeUser = user;
@@ -98,4 +97,8 @@ public class RedditServiceImp implements RedditService {
     return errorMessageRepository.getByMessageContains(userName);
   }
 
+  @Override
+  public Post getPostById(Long id) {
+    return postRepository.findById(id).orElse(null);
+  }
 }

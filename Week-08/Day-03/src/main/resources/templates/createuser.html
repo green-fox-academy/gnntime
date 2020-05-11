@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<p class="error_messages" th:if="${error}" th:text="|${error.message} You can create one below:|">
+<p class="error_messages" th:if="${error}" th:text="|User ${error.message} You can create one below:|">
 <p> Please give a User Name for your account </p>
 <form action="/createuser" th:object="${user}" method="post">
 
