@@ -9,12 +9,12 @@ public class Ship {
     this.listOfPirates = new ArrayList<>();
   }
 
-  public void addPirate(Pirate pirate) {
-    if (!pirate.isCaptain()) {
-      this.listOfPirates.add(pirate);
-    } else if (!isThereACaptain()) {
-      this.listOfPirates.add(pirate);
-    }
+  public List<Pirate> getListOfPirates() {
+    return listOfPirates;
+  }
+
+  public void setListOfPirates(List<Pirate> listOfPirates) {
+    this.listOfPirates = listOfPirates;
   }
 
   public boolean isThereACaptain() {
@@ -40,16 +40,20 @@ public class Ship {
     return poorPirateNames;
   }
 
+  public void addPirate(Pirate pirate) {
+    if (!pirate.isCaptain()) {
+      this.listOfPirates.add(pirate);
+    } else if (!isThereACaptain()) {
+      this.listOfPirates.add(pirate);
+    }
+  }
+
   public int getGolds() {
-    int totalGold =0;
+    int totalGold = 0;
     for (Pirate pirate : this.listOfPirates) {
       totalGold += pirate.getAmountOfGold();
     }
     return totalGold;
-  }
-
-  public List<Pirate> getListOfPirates() {
-    return listOfPirates;
   }
 
   public void lastDayOnTheShip() {
