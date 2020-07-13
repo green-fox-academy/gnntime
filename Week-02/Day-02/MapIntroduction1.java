@@ -5,11 +5,8 @@ public class MapIntroduction1 {
     HashMap<Integer, String> practiceMap = new HashMap<>();
 
     //Print out whether the map is empty or not
-      if (practiceMap == null) {
-          System.out.println("The hashmap is empty");
-      } else {
-          System.out.println("The hashmap is not empty");
-      }
+    System.out.println(practiceMap.isEmpty());
+    System.out.println("The hashmap is not empty");
 
     //add the values
     practiceMap.put(97, "a");
